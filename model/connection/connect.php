@@ -1,12 +1,11 @@
 <?php 
 
-class Conexion{
+class Connection{
 
-	static public function conectar(){
+	static public function conn(){
 
-		#PDO("nombre del servidor; nombre de la base de datos", "usuario", "contraseña")
-
-		$link = new PDO("mysql:host=localhost;dbname=bioscan", 
+		#Connection to DB  with user and password
+		$link = new PDO("mysql:host=localhost;dbname=elearning_db", 
 			            "root", 
 			            "root");
 
