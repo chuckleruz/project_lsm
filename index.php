@@ -1,5 +1,10 @@
 
-<?php  include "partials/header/header.php" ?>
+<?php  
+include "partials/header/header.php";
+
+session_start();
+if (isset($_SESSION["usuario"])) {
+?>
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -85,10 +90,10 @@
             $_GET["pagina"] == "reportes" ||
             $_GET["pagina"] == "evaluacion" ||
             $_GET["pagina"] == "administracionUsuarios") {
-            include "vistas/" . $_GET["pagina"] . ".php";
+            include "views/" . $_GET["pagina"] . ".php";
         }
     }else {
-        include "vistas/dashboard.php";
+        include "views/dashboard.php";
     }
   ?>
 
@@ -103,11 +108,17 @@
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <?php include "partials/footer/footer.php" ?> 
+  <?php include "./partials/footer/footer.php"; ?> 
 <!-- ./wrapper -->
 </div>
 
-<?php include "partials/footer/js/scripts.php" ?>
-
+<?php include "./partials/footer/js/scripts.php"; ?>
+<!-- iniciar sesión -->
+<?php
+  }else {
+      include "views/login.php";
+  }
+  ?>
+  <!-- iniciar sesión -->
 </body>
 </html>
