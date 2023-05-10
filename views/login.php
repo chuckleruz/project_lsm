@@ -57,6 +57,6 @@
   <!-- jQuery -->
   <!-- Bootstrap 4 -->
   <!-- AdminLTE App -->
-  <?php include "../partials/footers/js/scripts.php" ?>
+  <?php include "./partials/footer/js/scripts.php" ?>
   <!-- Scripts personalizados -->
-  <?php include "../partials/footers/js/scripts.login.php" ?>
+  <?php include "./partials/footer/js/scripts.login.php" ?>

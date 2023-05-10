@@ -1,8 +1,5 @@
 <?php
-
-include "./connection/connect.php";
-
-class Students {
+class Users {
 
     var $conn;
     function __construct(){
@@ -13,10 +10,13 @@ class Students {
         $this->conn = null;
     }
 
-    public function insertAdmin($post){
+    
 
-        $sql = "INSERT INTO administradores (nombre, apellido, correo_electronico, contrasenia, fecha_de_registro, estado)
-        VALUES (:nombre, :apellido, :correo, :contrasenia, :fecha_registro, :estado);";
+    public function insertAdmin($post){
+         $date = date('Y-m-d H:i:s');
+
+        $sql = "INSERT INTO administradores (nombre, apellido, correo_electronico, contrasena, fecha_de_registro, estado,nivel)
+        VALUES (:nombre, :apellido, :correo, '$2y$10$9QmIefhwlrh0w46lswn0h.ONFr0xIqcC9Aa.sIEdmwrlpjMDt7jI2', '$date', '1','1');";
          $stmt = $this->conn->prepare($sql);
          $stmt->execute($post);
          if($stmt->errorInfo()[1] == null){
@@ -27,9 +27,9 @@ class Students {
     }
 
     public function insertStudents($post){
-
-        $sql = "INSERT INTO Estudiantes (nombre, apellido, correo_electronico, contrasenia, fecha_de_registro, estado) 
-        VALUES (:nombre, :apellido, :correo, :contrasenia, :fecha_registro, :estado)";
+        $date = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO estudiantes (nombre, apellido, correo_electronico, contrasena, fecha_de_registro, estado,nivel) 
+        VALUES (:nombre, :apellido, :email, '$2y$10$9QmIefhwlrh0w46lswn0h.ONFr0xIqcC9Aa.sIEdmwrlpjMDt7jI2', '$date', '1','3')";
          $stmt = $this->conn->prepare($sql);
          $stmt->execute($post);
          if($stmt->errorInfo()[1] == null){
@@ -41,8 +41,9 @@ class Students {
 
     public function insertProfesor($post){
 
-        $sql = "INSERT INTO docentes (nombre, apellido, correo_electronico, contrasenia, fecha_de_registro, estado)
-        VALUES (:nombre, :apellido, :correo, :contrasenia, :fecha_registro, :estado);";
+        $date = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO docentes (nombre, apellido, correo_electronico, contrasena, fecha_de_registro, estado,nivel)
+        VALUES (:nombre, :apellido, :email, '$2y$10$9QmIefhwlrh0w46lswn0h.ONFr0xIqcC9Aa.sIEdmwrlpjMDt7jI2', '$date', 'activo','2');";
          $stmt = $this->conn->prepare($sql);
          $stmt->execute($post);
          if($stmt->errorInfo()[1] == null){

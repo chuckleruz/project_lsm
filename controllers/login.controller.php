@@ -1,5 +1,5 @@
 <?php
-require("../model/conexion.php");
+require("../model/connection/connect.php");
 require("../model/login.model.php");
 
 $accion = @isset($_POST['action']) ? $_POST['action'] : $_GET['action'];
@@ -22,7 +22,7 @@ switch ($accion) {
     
 
     // Verificar si la contraseña encriptada coincide con la contraseña almacenada en la base de datos
-    if ($usuario && password_verify($contrasena, $usuario['password'])) {
+    if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
       // Iniciar la sesión del usuario
       //&& password_verify($contrasena, $usuario['password'])
       session_start();

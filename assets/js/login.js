@@ -5,7 +5,7 @@ $("#form-login").on('submit', function(e){
     fdata.append('action', 'login');
     //fdata.append('creador_por', usrInfo.idAcceso);
     $.ajax({
-        url: './controller/login.controller.php',
+        url: './controllers/login.controller.php',
         type: "POST",
         data: fdata,
         contentType:false,
