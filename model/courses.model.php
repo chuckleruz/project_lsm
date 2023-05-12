@@ -1,7 +1,5 @@
 <?php
 
-include "./connection/connect.php";
-
 class Courses {
 
     var $conn;
