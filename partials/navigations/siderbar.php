@@ -58,7 +58,7 @@ $permisos = new Permisos();
             </a>
           </li>
           <li class="nav-item">
-            <a href="index.php?pagina=ajustes" class="nav-link">
+            <a href="index.php?pagina=sesiones" class="nav-link">
               <i class="fa fa-video"></i>
               <p>Sesiones</p>
             </a>

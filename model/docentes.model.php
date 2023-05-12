@@ -11,11 +11,15 @@ class Docentes
         $this->conexion = null;
     }
     
-    function obtenerDocentes(){
+    function obtenerDocentes($selectid){
         $query = "SELECT * FROM `docentes`";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
-        return $stmt;
+        if($selectid){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            return $stmt;
+        }
     }
 
     function obtenerDocente($idDocente){

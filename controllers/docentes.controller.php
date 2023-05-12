@@ -27,7 +27,8 @@ switch ($accion) {
             }
         break;
         case 'obtenerDocentes':
-            $docentes = $model->obtenerDocentes();
+            $selectid = false;
+            $docentes = $model->obtenerDocentes($selectid);
             $data = Array();
             while($dato=$docentes->fetchObject()){
                 $data[]=array(
@@ -90,16 +91,32 @@ switch ($accion) {
             }
             break;
         case 'validarsiExisteEmail':
-            $alumnos = $model->validarsiExisteEmail($_POST);
-            if ($alumnos) {
+
+            $docentes = $model->validarsiExisteEmail($_POST);
+            if ($docentes) {
                 echo json_encode([
                     "status" => "success",
-                    "data" => $alumnos
+                    "data" => $docentes
                 ]);
             } else {
                 echo json_encode([
                     "status" => "error",
-                    "message" => "No se ha podido obtener al alumno"
+                    "message" => "No se ha podido obtener al docente"
+                ]);
+            }
+        break;
+        case 'obtenerDocentesSelect':
+            $selectid = true;
+            $docentes = $model->obtenerDocentes($selectid);
+            if ($docentes) {
+                echo json_encode([
+                    "status" => "success",
+                    "data" => $docentes
+                ]);
+            } else {
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "No se ha podido obtener al docente"
                 ]);
             }
             break;

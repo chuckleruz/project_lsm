@@ -103,6 +103,22 @@ switch ($accion) {
                 ]);
             }
             break;
+
+            case 'obtenerAlumnosSelect':
+                $selectid = true;
+                $docentes = $model->obtenerAlumnos($selectid);
+                if ($docentes) {
+                    echo json_encode([
+                        "status" => "success",
+                        "data" => $docentes
+                    ]);
+                } else {
+                    echo json_encode([
+                        "status" => "error",
+                        "message" => "No se ha podido obtener al docente"
+                    ]);
+                }
+                break;
     default:
         # code...
         break;
